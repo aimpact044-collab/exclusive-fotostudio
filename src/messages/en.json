@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Exclusive Foto Studio — Wedding Photo & Video Studio in Moldova",
+    "description": "Premium photography and videography for weddings, cumătrii, baptisms, love stories and events in Moldova. Cinematic stories that stay with you forever."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "categories": {
+    "weddings": "Weddings",
+    "cumatrii": "Cumătrii",
+    "baptisms": "Baptisms",
+    "love-stories": "Love Story",
+    "events": "Events"
+  },
+  "hero": {
+    "eyebrow": "Photo & Video Studio · Moldova",
+    "title": "Love stories,\nbeautifully told",
+    "subtitle": "We are a team of photographers and videographers in love with weddings, cumătrii, baptisms and real emotion.",
+    "ctaPrimary": "View portfolio",
+    "ctaSecondary": "Get in touch",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "eyebrow": "About the team",
+    "title": "A team that lives your story",
+    "description": "We are 5 people — photographers, videographers and an editor. We work as one team at every wedding, so no emotion is missed: from getting ready to the very last dance.",
+    "stat1Value": "10+ years",
+    "stat1Label": "of wedding photography experience",
+    "stat2Value": "300+",
+    "stat2Label": "stories captured",
+    "stat3Value": "5",
+    "stat3Label": "people on the team",
+    "cta": "Learn more"
+  },
+  "featured": {
+    "eyebrow": "Portfolio",
+    "title": "Featured projects",
+    "subtitle": "A few stories that are especially dear to us",
+    "viewAll": "View full portfolio",
+    "viewProject": "View project"
+  },
+  "contactSection": {
+    "eyebrow": "Let's start",
+    "title": "Tell us about your celebration",
+    "subtitle": "Fill in the form and we'll get back to you within 24 hours to discuss the details and choose the best package.",
+    "cta": "Write to us"
+  },
+  "footer": {
+    "tagline": "Premium wedding photo & video studio in Moldova.",
+    "navigation": "Navigation",
+    "categories": "Categories",
+    "contacts": "Contacts",
+    "followUs": "Follow us",
+    "rights": "All rights reserved."
+  },
+  "portfolio": {
+    "eyebrow": "Our work",
+    "title": "Portfolio",
+    "subtitle": "Every story is unique — pick a category to see more",
+    "all": "All",
+    "empty": "Projects in this category are coming soon.",
+    "viewProject": "View project"
+  },
+  "project": {
+    "backToPortfolio": "Back to portfolio",
+    "date": "Date",
+    "gallery": "Photo gallery",
+    "video": "Video",
+    "notFound": "Project not found",
+    "relatedTitle": "More stories"
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "title": "Let's create\nyour story",
+    "subtitle": "Send us a request and we will contact you to discuss the date, location and format of your shoot.",
+    "infoTitle": "How to reach us",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Location",
+    "social": "Social media"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "phone": "Phone",
+    "phonePlaceholder": "+373 6XX XXX XX",
+    "eventType": "Event type",
+    "eventTypePlaceholder": "Choose event type",
+    "eventDate": "Event date",
+    "message": "Message",
+    "messagePlaceholder": "Tell us a bit about your celebration...",
+    "optional": "optional",
+    "submit": "Send request",
+    "submitting": "Sending...",
+    "success": "Thank you! We've received your request and will contact you shortly.",
+    "error": "Something went wrong. Please try again or write to us directly.",
+    "requiredError": "Please provide a phone number",
+    "eventTypes": {
+      "wedding": "Wedding",
+      "cumatrie": "Cumătrie",
+      "baptism": "Baptism",
+      "love-story": "Love Story",
+      "event": "Other event"
+    }
+  },
+  "common": {
+    "readMore": "Read more",
+    "loading": "Loading...",
+    "language": "Language",
+    "back": "Back"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "A full range of services for your special moments",
+    "subtitle": "From our first conversation to the printed photo in your hands — we're with you every step of the way.",
+    "items": {
+      "weddingPhoto": {
+        "title": "Wedding Photography",
+        "description": "Complete photo coverage of your wedding day — from getting ready to the last dance."
+      },
+      "weddingVideo": {
+        "title": "Wedding Videography",
+        "description": "A cinematic film of your day that you'll cherish watching for years to come."
+      },
+      "cumatrii": {
+        "title": "Cumătrii",
+        "description": "Warm, authentic coverage of the traditional Moldovan celebration."
+      },
+      "baptisms": {
+        "title": "Baptisms",
+        "description": "Gentle, heartfelt photos from one of the most important days for your family."
+      },
+      "loveStory": {
+        "title": "Love Story Sessions",
+        "description": "A romantic couple's shoot — before the wedding or to mark an anniversary."
+      },
+      "familySessions": {
+        "title": "Family Photo Sessions",
+        "description": "Genuine family portraits full of warmth and closeness."
+      },
+      "individualSessions": {
+        "title": "Individual Photo Sessions",
+        "description": "A personal shoot that highlights your individuality."
+      },
+      "eventPhoto": {
+        "title": "Event Photography",
+        "description": "Corporate events, anniversaries and celebrations of any scale."
+      },
+      "eventVideo": {
+        "title": "Event Videography",
+        "description": "Dynamic video that captures the atmosphere of your event."
+      }
+    },
+    "sessionsEyebrow": "Photo Sessions",
+    "sessionsTitle": "Photo sessions all year round",
+    "sessionsSubtitle": "Individual, couple, family, pregnancy and seasonal sessions — in studio or at a location of your choice.",
+    "sessionTypes": {
+      "individual": "Individual",
+      "couple": "Couple",
+      "family": "Family",
+      "pregnancy": "Pregnancy",
+      "seasonal": "Seasonal"
+    }
+  },
+  "instantPrinting": {
+    "badge": "Exclusive service",
+    "eyebrow": "Our advantage",
+    "title": "Instant Photo Printing",
+    "description": "While your guests keep celebrating, your best shots are already ready to hold in your hands. We print professional photographs right at your wedding or event — within minutes of the shot.",
+    "point1": "Printed within minutes of the shot",
+    "point2": "Premium professional photo equipment",
+    "point3": "Elegant print presentation, your choice of style",
+    "cta": "Learn more"
+  },
+  "winterLocations": {
+    "eyebrow": "Winter season",
+    "title": "Exclusive winter locations",
+    "description": "Every winter we open cozy indoor locations for professional photo sessions — atmospheric light, handcrafted décor and warmth during the coldest months of the year.",
+    "cta": "Book a location"
+  }
+}

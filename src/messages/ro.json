@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "title": "Exclusive Foto Studio — Studio foto-video de nuntă în Moldova",
+    "description": "Fotografie și videografie premium pentru nunți, cumătrii, botezuri, love story și evenimente în Moldova. Povești cinematografice care rămân cu tine pentru totdeauna."
+  },
+  "nav": {
+    "home": "Acasă",
+    "services": "Servicii",
+    "portfolio": "Portofoliu",
+    "about": "Despre noi",
+    "contact": "Contact",
+    "menu": "Meniu",
+    "close": "Închide"
+  },
+  "categories": {
+    "weddings": "Nunți",
+    "cumatrii": "Cumătrii",
+    "baptisms": "Botezuri",
+    "love-stories": "Love Story",
+    "events": "Evenimente"
+  },
+  "hero": {
+    "eyebrow": "Studio foto-video · Moldova",
+    "title": "Povești de dragoste,\nsurprinse frumos",
+    "subtitle": "Suntem o echipă de fotografi și videografi îndrăgostiți de nunți, cumătrii, botezuri și emoții reale.",
+    "ctaPrimary": "Vezi portofoliul",
+    "ctaSecondary": "Contactează-ne",
+    "scroll": "Derulează"
+  },
+  "about": {
+    "eyebrow": "Despre echipă",
+    "title": "O echipă care trăiește povestea ta",
+    "description": "Suntem 5 persoane — fotografi, videografi și un regizor de montaj. Lucrăm ca o singură echipă la fiecare nuntă, ca să nu pierdem nicio emoție: de la pregătiri până la ultimul dans.",
+    "stat1Value": "10+ ani",
+    "stat1Label": "experiență în fotografia de nuntă",
+    "stat2Value": "300+",
+    "stat2Label": "povești surprinse",
+    "stat3Value": "5",
+    "stat3Label": "persoane în echipă",
+    "cta": "Află mai multe"
+  },
+  "featured": {
+    "eyebrow": "Portofoliu",
+    "title": "Proiecte selectate",
+    "subtitle": "Câteva povești care ne sunt deosebit de dragi",
+    "viewAll": "Tot portofoliul",
+    "viewProject": "Vezi proiectul"
+  },
+  "contactSection": {
+    "eyebrow": "Începem?",
+    "title": "Povestește-ne despre evenimentul tău",
+    "subtitle": "Completează formularul — te vom contacta în 24 de ore pentru a discuta detaliile și a alege cel mai potrivit pachet.",
+    "cta": "Scrie-ne"
+  },
+  "footer": {
+    "tagline": "Studio foto-video premium de nuntă în Moldova.",
+    "navigation": "Navigare",
+    "categories": "Categorii",
+    "contacts": "Contact",
+    "followUs": "Urmărește-ne",
+    "rights": "Toate drepturile rezervate."
+  },
+  "portfolio": {
+    "eyebrow": "Lucrările noastre",
+    "title": "Portofoliu",
+    "subtitle": "Fiecare poveste este unică — alege o categorie pentru a vedea mai multe",
+    "all": "Toate",
+    "empty": "Proiectele din această categorie vor apărea în curând.",
+    "viewProject": "Vezi proiectul"
+  },
+  "project": {
+    "backToPortfolio": "Înapoi la portofoliu",
+    "date": "Data",
+    "gallery": "Galerie foto",
+    "video": "Video",
+    "notFound": "Proiectul nu a fost găsit",
+    "relatedTitle": "Alte povești"
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "title": "Hai să creăm\npovestea ta",
+    "subtitle": "Lasă-ne o cerere și te vom contacta pentru a discuta data, locația și formatul ședinței foto-video.",
+    "infoTitle": "Cum ne poți contacta",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Locație",
+    "social": "Rețele sociale"
+  },
+  "form": {
+    "name": "Nume",
+    "namePlaceholder": "Numele tău",
+    "phone": "Telefon",
+    "phonePlaceholder": "+373 6XX XXX XX",
+    "eventType": "Tipul evenimentului",
+    "eventTypePlaceholder": "Alege tipul evenimentului",
+    "eventDate": "Data evenimentului",
+    "message": "Mesaj",
+    "messagePlaceholder": "Povestește-ne puțin despre evenimentul tău...",
+    "optional": "opțional",
+    "submit": "Trimite cererea",
+    "submitting": "Se trimite...",
+    "success": "Mulțumim! Am primit cererea ta și te vom contacta în curând.",
+    "error": "Ceva nu a funcționat. Te rugăm să încerci din nou sau să ne scrii direct.",
+    "requiredError": "Te rugăm să indici numărul de telefon",
+    "eventTypes": {
+      "wedding": "Nuntă",
+      "cumatrie": "Cumătrie",
+      "baptism": "Botez",
+      "love-story": "Love Story",
+      "event": "Alt eveniment"
+    }
+  },
+  "common": {
+    "readMore": "Detalii",
+    "loading": "Se încarcă...",
+    "language": "Limbă",
+    "back": "Înapoi"
+  },
+  "services": {
+    "eyebrow": "Servicii",
+    "title": "O gamă completă de servicii pentru momentele tale speciale",
+    "subtitle": "De la prima întâlnire până la fotografia finită în mână — te însoțim pe tot parcursul poveștii.",
+    "items": {
+      "weddingPhoto": {
+        "title": "Fotografie de nuntă",
+        "description": "Fotografie completă a zilei nunții — de la pregătiri până la ultimul dans."
+      },
+      "weddingVideo": {
+        "title": "Videografie de nuntă",
+        "description": "Un film cinematografic al zilei tale, pe care îl vei revedea cu drag ani la rând."
+      },
+      "cumatrii": {
+        "title": "Cumătrii",
+        "description": "Filmări calde și autentice ale tradiționalei sărbători moldovenești."
+      },
+      "baptisms": {
+        "title": "Botezuri",
+        "description": "Cadre delicate și emoționante dintr-una din cele mai importante zile ale familiei."
+      },
+      "loveStory": {
+        "title": "Love Story",
+        "description": "Ședință foto romantică pentru cuplu — înainte de nuntă sau de aniversare."
+      },
+      "familySessions": {
+        "title": "Ședințe foto de familie",
+        "description": "Portrete de familie autentice, pline de căldură și apropiere."
+      },
+      "individualSessions": {
+        "title": "Ședințe foto individuale",
+        "description": "O ședință personală care îți pune în valoare individualitatea."
+      },
+      "eventPhoto": {
+        "title": "Fotografie de eveniment",
+        "description": "Evenimente corporative, aniversări și sărbători de orice amploare."
+      },
+      "eventVideo": {
+        "title": "Videografie de eveniment",
+        "description": "Un video dinamic care surprinde atmosfera evenimentului tău."
+      }
+    },
+    "sessionsEyebrow": "Ședințe foto",
+    "sessionsTitle": "Ședințe foto pe tot parcursul anului",
+    "sessionsSubtitle": "Individuale, de cuplu, de familie sau sezoniere — în studio sau la locația aleasă de tine.",
+    "sessionTypes": {
+      "individual": "Individuale",
+      "couple": "De cuplu",
+      "family": "De familie",
+      "pregnancy": "Sarcină",
+      "seasonal": "Sezoniere"
+    }
+  },
+  "instantPrinting": {
+    "badge": "Serviciu exclusiv",
+    "eyebrow": "Avantajul nostru",
+    "title": "Printare instant a fotografiilor",
+    "description": "În timp ce invitații se bucură de petrecere, cele mai bune cadre sunt deja gata de a fi ținute în mână. Printăm fotografii profesionale chiar la nuntă sau eveniment — în câteva minute de la fotografiere.",
+    "point1": "Printare în doar câteva minute după cadru",
+    "point2": "Echipament foto profesional de top",
+    "point3": "Prezentare elegantă a fotografiilor, la alegere",
+    "cta": "Află mai multe"
+  },
+  "winterLocations": {
+    "eyebrow": "Sezonul de iarnă",
+    "title": "Locații exclusive de iarnă",
+    "description": "În fiecare iarnă deschidem locații interioare primitoare pentru ședințe foto profesionale — lumină atmosferică, decor lucrat manual și căldură în cele mai reci luni ale anului.",
+    "cta": "Rezervă locația"
+  }
+}

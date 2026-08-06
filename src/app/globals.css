@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------------------------------------------------------------------- */
+/* Design tokens — premium editorial wedding palette                       */
+/* Light, warm, cream/beige tones with a muted gold accent.                */
+/* ---------------------------------------------------------------------- */
+:root {
+  --background: #fbf8f3;
+  --foreground: #2b2520;
+
+  --card: #ffffff;
+  --card-foreground: #2b2520;
+
+  --popover: #ffffff;
+  --popover-foreground: #2b2520;
+
+  --primary: #2b2520;
+  --primary-foreground: #fbf8f3;
+
+  --secondary: #efe6d8;
+  --secondary-foreground: #2b2520;
+
+  --muted: #f1ebe1;
+  --muted-foreground: #756a5d;
+
+  --accent: #ab8a5c;
+  --accent-foreground: #2b2520;
+
+  --gold: #ab8a5c;
+  --cream: #fbf8f3;
+  --beige: #efe6d8;
+  --ink: #2b2520;
+
+  --destructive: #b3432f;
+  --destructive-foreground: #fbf8f3;
+
+  --border: #e4dac9;
+  --input: #e4dac9;
+  --ring: #ab8a5c;
+
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-beige: var(--beige);
+  --color-ink: var(--ink);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 0.125rem);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 0.25rem);
+  --radius-xl: calc(var(--radius) + 0.5rem);
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  --animate-fade-in: fade-in 0.6s ease-out;
+  --animate-fade-up: fade-up 0.7s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--cream);
+  }
+}
+
+/* Editorial section eyebrow label used across the site */
+.eyebrow {
+  @apply text-xs sm:text-sm uppercase tracking-[0.25em] text-accent font-medium;
+}
+
+/* Balanced, elegant paragraph measure for long-form copy */
+.prose-measure {
+  max-width: 62ch;
+}
