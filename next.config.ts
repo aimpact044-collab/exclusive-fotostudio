@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "pub-63d46297e0d5434da838435b3f9eefe6.r2.dev",
+        hostname: "pub-565966d2cb064a4f83091ad3ab5235a6.r2.dev",
       },
       {
         protocol: "https",
@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
+    // Photography studio — client photos must not look compressed. Default
+    // quality (75) is too aggressive for full-bleed hero/gallery shots.
+    qualities: [75, 90, 100],
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],

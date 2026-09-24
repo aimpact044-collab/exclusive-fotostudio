@@ -32,6 +32,7 @@ export function Hero({ imageUrl, title, subtitle, ctaText, ctaHref }: HeroProps)
           alt=""
           fill
           priority
+          quality={100}
           sizes="100vw"
           className="absolute inset-0 object-cover"
         />

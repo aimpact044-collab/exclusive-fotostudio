@@ -5,7 +5,7 @@ import { Play } from "lucide-react";
 import Image from "next/image";
 
 /** Extracts a YouTube video ID from common URL formats. */
-function getYoutubeId(url: string): string | null {
+export function getYoutubeId(url: string): string | null {
   const patterns = [
     /youtu\.be\/([\w-]{11})/,
     /youtube\.com\/watch\?v=([\w-]{11})/,

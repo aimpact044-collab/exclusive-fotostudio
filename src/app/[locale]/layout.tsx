@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_NAME } from "@/lib/constants";
+import { getEventTypesWithMedia, getSettings } from "@/lib/data";
 
 import "../globals.css";
 
@@ -37,13 +38,19 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  // Same code/DB runs on pre-prod and prod — only the domain differs, so it
+  // comes from an env var (falls back to Vercel's per-deployment URL, then localhost).
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
   return {
     title: {
       default: t("title"),
       template: `%s · ${SITE_NAME}`,
     },
     description: t("description"),
-    metadataBase: new URL("https://exclusivefotostudio.md"),
+    metadataBase: new URL(siteUrl),
     alternates: {
       languages: {
         ru: "/",
@@ -75,6 +82,9 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
+  const eventTypes = await getEventTypesWithMedia();
+  const settings = await getSettings();
+
   return (
     <html
       lang={locale}
@@ -82,9 +92,9 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <NextIntlClientProvider>
-          <Header />
+          <Header eventTypes={eventTypes} />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <Footer eventTypes={eventTypes} settings={settings} />
           <Toaster position="bottom-right" />
         </NextIntlClientProvider>
       </body>

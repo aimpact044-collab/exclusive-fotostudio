@@ -4,18 +4,21 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import { localizedName } from "@/lib/event-type-i18n";
 import { LocaleSwitcher } from "./locale-switcher";
-import { CATEGORY_SLUGS, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
+import type { Locale } from "@/i18n/routing";
+import type { EventType } from "@/types";
 
-export function Header() {
+export function Header({ eventTypes }: { eventTypes: EventType[] }) {
   const t = useTranslations("nav");
-  const tCategories = useTranslations("categories");
   const pathname = usePathname();
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -55,14 +58,15 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link
-          href="/"
-          className={cn(
-            "font-serif text-xl tracking-wide transition-colors",
-            transparent ? "text-white" : "text-foreground"
-          )}
-        >
-          {SITE_NAME}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/exclusive.jpg"
+            alt={SITE_NAME}
+            width={160}
+            height={40}
+            priority
+            className="h-9 w-auto rounded-sm object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-10 lg:flex">
@@ -168,13 +172,13 @@ export function Header() {
               transition={{ delay: 0.35 }}
               className="mt-6 flex flex-wrap gap-3"
             >
-              {CATEGORY_SLUGS.map((slug) => (
+              {eventTypes.map((eventType) => (
                 <Link
-                  key={slug}
-                  href={{ pathname: "/portfolio/[category]", params: { category: slug } }}
+                  key={eventType.id}
+                  href={{ pathname: "/portfolio/[category]", params: { category: eventType.slug } }}
                   className="border border-cream/30 px-4 py-2 text-xs uppercase tracking-widest text-cream/80"
                 >
-                  {tCategories(slug)}
+                  {localizedName(eventType, locale)}
                 </Link>
               ))}
             </motion.div>

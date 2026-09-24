@@ -10,14 +10,6 @@ import { markSubmissionRead } from "@/actions/submissions";
 import { cn } from "@/lib/utils";
 import type { ContactSubmission } from "@/types";
 
-const EVENT_TYPE_LABELS: Record<string, string> = {
-  wedding: "Свадьба",
-  cumatrie: "Кумэтрия",
-  baptism: "Крестины",
-  "love-story": "Love Story",
-  event: "Мероприятие",
-};
-
 export function SubmissionsTable({ submissions }: { submissions: ContactSubmission[] }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -50,7 +42,7 @@ export function SubmissionsTable({ submissions }: { submissions: ContactSubmissi
               <span className="text-muted-foreground">· {submission.phone}</span>
             </div>
             <div className="mt-1 flex flex-wrap gap-x-4 text-xs text-muted-foreground">
-              {submission.event_type && <span>{EVENT_TYPE_LABELS[submission.event_type]}</span>}
+              {submission.event_type && <span>{submission.event_type}</span>}
               {submission.event_date && <span>Дата: {submission.event_date}</span>}
               <span>{format(new Date(submission.created_at), "d MMMM yyyy, HH:mm", { locale: ru })}</span>
             </div>

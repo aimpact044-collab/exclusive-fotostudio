@@ -3,6 +3,7 @@ import { updateSettings } from "@/actions/settings";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { LocalizedTextField } from "@/components/admin/localized-text-field";
 import { FALLBACK_SETTINGS } from "@/lib/constants";
 
 export default async function AdminSettingsPage() {
@@ -54,6 +55,29 @@ export default async function AdminSettingsPage() {
         <div className="space-y-2">
           <Label htmlFor="hero_video_url">Видео на главной (YouTube, опционально)</Label>
           <Input id="hero_video_url" name="hero_video_url" defaultValue={settings.hero_video_url ?? ""} />
+        </div>
+
+        <div className="space-y-4 border-t border-border pt-6">
+          <h2 className="font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Подвал сайта
+          </h2>
+          <LocalizedTextField
+            label="Описание под логотипом"
+            name="footer_tagline"
+            value={settings.footer_tagline}
+            valueRo={settings.footer_tagline_ro}
+            valueEn={settings.footer_tagline_en}
+            placeholder="Оставьте пустым, чтобы использовать текст по умолчанию"
+          />
+        </div>
+
+        <div className="space-y-4 border-t border-border pt-6">
+          <h2 className="font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Страница «Контакты»
+          </h2>
+          <LocalizedTextField label="Рубрика" name="contact_page_eyebrow" value={settings.contact_page_eyebrow} valueRo={settings.contact_page_eyebrow_ro} valueEn={settings.contact_page_eyebrow_en} rows={1} />
+          <LocalizedTextField label="Заголовок" name="contact_page_title" value={settings.contact_page_title} valueRo={settings.contact_page_title_ro} valueEn={settings.contact_page_title_en} />
+          <LocalizedTextField label="Подзаголовок" name="contact_page_subtitle" value={settings.contact_page_subtitle} valueRo={settings.contact_page_subtitle_ro} valueEn={settings.contact_page_subtitle_en} rows={3} />
         </div>
 
         <Button type="submit" size="lg">

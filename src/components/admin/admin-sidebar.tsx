@@ -2,18 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { LayoutDashboard, GalleryVerticalEnd, Settings, Inbox, LogOut, ExternalLink, Home } from "lucide-react";
+import Image from "next/image";
+import { Tags, Settings, Inbox, LogOut, ExternalLink, Home } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { logoutAction } from "@/actions/auth";
 import { SITE_NAME } from "@/lib/constants";
 
 const NAV_ITEMS = [
-  { href: "/admin", label: "Обзор", icon: LayoutDashboard },
-  { href: "/admin/homepage", label: "Главная страница", icon: Home },
-  { href: "/admin/projects", label: "Проекты", icon: GalleryVerticalEnd },
-  { href: "/admin/submissions", label: "Заявки", icon: Inbox },
-  { href: "/admin/settings", label: "Настройки", icon: Settings },
+  { href: "/admin-portal/homepage", label: "Главная страница", icon: Home },
+  { href: "/admin-portal/event-types", label: "Категории", icon: Tags },
+  { href: "/admin-portal/submissions", label: "Заявки", icon: Inbox },
+  { href: "/admin-portal/settings", label: "Настройки", icon: Settings },
 ];
 
 export function AdminSidebar() {
@@ -21,15 +21,20 @@ export function AdminSidebar() {
 
   return (
     <aside className="flex w-64 shrink-0 flex-col border-r border-border bg-card px-5 py-8">
-      <Link href="/admin" className="font-sans text-lg font-semibold">
-        {SITE_NAME}
+      <Link href="/admin-portal/event-types" className="flex items-center">
+        <Image
+          src="/exclusive.jpg"
+          alt={SITE_NAME}
+          width={160}
+          height={40}
+          className="h-9 w-auto rounded-sm object-contain"
+        />
       </Link>
       <p className="mb-8 mt-1 text-xs text-muted-foreground">Панель управления</p>
 
       <nav className="flex flex-1 flex-col gap-1">
         {NAV_ITEMS.map((item) => {
-          const active =
-            item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href);
+          const active = pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}

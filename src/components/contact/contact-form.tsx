@@ -18,10 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { contactFormSchema, type ContactFormValues } from "@/lib/validations";
-import { EVENT_TYPES } from "@/lib/constants";
 import { submitContactForm } from "@/actions/contact";
+import type { EventType } from "@/types";
 
-export function ContactForm() {
+export function ContactForm({ eventTypes }: { eventTypes: EventType[] }) {
   const t = useTranslations("form");
   const [submitted, setSubmitted] = useState(false);
 
@@ -94,9 +94,9 @@ export function ContactForm() {
                   <SelectValue placeholder={t("eventTypePlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
-                  {EVENT_TYPES.map((type) => (
-                    <SelectItem key={type} value={type}>
-                      {t(`eventTypes.${type}`)}
+                  {eventTypes.map((type) => (
+                    <SelectItem key={type.id} value={type.name}>
+                      {type.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

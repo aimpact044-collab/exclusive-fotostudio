@@ -2,8 +2,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageHero } from "@/components/shared/page-hero";
 import { CategoryNav } from "@/components/portfolio/category-nav";
-import { PortfolioGrid } from "@/components/portfolio/portfolio-grid";
-import { getProjects } from "@/lib/data";
+import { Gallery } from "@/components/portfolio/gallery";
+import { VideoGrid } from "@/components/portfolio/video-grid";
+import { getMediaByCategory, getEventTypesWithMedia } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -25,15 +26,30 @@ export default async function PortfolioPage({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "portfolio" });
-  const projects = await getProjects();
+  const tProject = await getTranslations({ locale, namespace: "project" });
+  const [{ photos, videos }, eventTypes] = await Promise.all([getMediaByCategory(), getEventTypesWithMedia()]);
 
   return (
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
       <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-10 lg:pb-32">
-        <CategoryNav />
-        <PortfolioGrid projects={projects} locale={locale} />
+        <CategoryNav eventTypes={eventTypes} />
+
+        {photos.length === 0 && videos.length === 0 ? (
+          <p className="py-24 text-center text-muted-foreground">{t("empty")}</p>
+        ) : (
+          <div className="pt-14">
+            {photos.length > 0 && <Gallery photos={photos} title={t("title")} />}
+            {videos.length > 0 && (
+              <div className={photos.length > 0 ? "mt-16" : undefined}>
+                <p className="eyebrow mb-6">{tProject("video")}</p>
+                <VideoGrid videos={videos} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
 }
+

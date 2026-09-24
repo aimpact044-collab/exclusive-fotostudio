@@ -33,6 +33,7 @@ export function Gallery({ photos, title }: { photos: Photo[]; title: string }) {
               alt={photo.alt || title}
               fill
               loading="lazy"
+              quality={90}
               sizes="(min-width: 1024px) 33vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -49,6 +50,7 @@ export function Gallery({ photos, title }: { photos: Photo[]; title: string }) {
                 src={photos[activeIndex].url}
                 alt={photos[activeIndex].alt || title}
                 fill
+                quality={100}
                 sizes="90vw"
                 className="object-contain"
               />

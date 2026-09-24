@@ -41,10 +41,9 @@
   },
   "featured": {
     "eyebrow": "Portfolio",
-    "title": "Featured projects",
-    "subtitle": "A few stories that are especially dear to us",
-    "viewAll": "View full portfolio",
-    "viewProject": "View project"
+    "title": "Featured categories",
+    "subtitle": "Take a look at our categories — you might find a story just like your own",
+    "viewAll": "View full portfolio"
   },
   "contactSection": {
     "eyebrow": "Let's start",
@@ -55,7 +54,7 @@
   "footer": {
     "tagline": "Premium wedding photo & video studio in Moldova.",
     "navigation": "Navigation",
-    "categories": "Categories",
+    "categories": "Portfolio",
     "contacts": "Contacts",
     "followUs": "Follow us",
     "rights": "All rights reserved."
@@ -65,16 +64,11 @@
     "title": "Portfolio",
     "subtitle": "Every story is unique — pick a category to see more",
     "all": "All",
-    "empty": "Projects in this category are coming soon.",
-    "viewProject": "View project"
+    "empty": "Photos in this category are coming soon.",
+    "moreEvents": "We also shoot birthdays, godparent ceremonies (cumătrii), photo sessions and other events — contact us to discuss details."
   },
   "project": {
-    "backToPortfolio": "Back to portfolio",
-    "date": "Date",
-    "gallery": "Photo gallery",
-    "video": "Video",
-    "notFound": "Project not found",
-    "relatedTitle": "More stories"
+    "video": "Video"
   },
   "contactPage": {
     "eyebrow": "Contact",
@@ -168,6 +162,14 @@
       "pregnancy": "Pregnancy",
       "seasonal": "Seasonal"
     }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Service packages",
+    "subtitle": "Choose the package that fits your event, or contact us for a custom offer.",
+    "featured": "Most popular",
+    "cta": "Get in touch",
+    "premiumOnly": "Premium only"
   },
   "instantPrinting": {
     "badge": "Exclusive service",

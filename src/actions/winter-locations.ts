@@ -33,7 +33,7 @@ export async function addWinterLocationPhotos(photos: { url: string; public_id: 
   if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-  revalidatePath("/admin/homepage");
+  revalidatePath("/admin-portal/homepage");
 }
 
 export async function toggleWinterLocationPhoto(id: string, isActive: boolean) {
@@ -48,7 +48,7 @@ export async function toggleWinterLocationPhoto(id: string, isActive: boolean) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-  revalidatePath("/admin/homepage");
+  revalidatePath("/admin-portal/homepage");
 }
 
 export async function deleteWinterLocationPhoto(id: string, publicId: string) {
@@ -60,5 +60,5 @@ export async function deleteWinterLocationPhoto(id: string, publicId: string) {
   if (error) throw new Error(error.message);
 
   revalidatePath("/", "layout");
-  revalidatePath("/admin/homepage");
+  revalidatePath("/admin-portal/homepage");
 }

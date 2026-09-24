@@ -8,12 +8,25 @@ import { Button } from "@/components/ui/button";
 import { getWinterLocationPhotos } from "@/lib/data";
 import type { WinterLocationPhoto } from "@/types";
 
-export async function WinterLocations() {
-  const photos = await getWinterLocationPhotos();
-  return <WinterLocationsView photos={photos} />;
+interface WinterLocationsProps {
+  eyebrow?: string | null;
+  title?: string | null;
+  description?: string | null;
+  ctaText?: string | null;
 }
 
-function WinterLocationsView({ photos }: { photos: WinterLocationPhoto[] }) {
+export async function WinterLocations(props: WinterLocationsProps) {
+  const photos = await getWinterLocationPhotos();
+  return <WinterLocationsView photos={photos} {...props} />;
+}
+
+function WinterLocationsView({
+  photos,
+  eyebrow,
+  title,
+  description,
+  ctaText,
+}: WinterLocationsProps & { photos: WinterLocationPhoto[] }) {
   const t = useTranslations("winterLocations");
 
   return (
@@ -24,11 +37,11 @@ function WinterLocationsView({ photos }: { photos: WinterLocationPhoto[] }) {
         <div className="mb-6 flex size-14 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent">
           <Snowflake className="size-6" />
         </div>
-        <p className="eyebrow mb-4">{t("eyebrow")}</p>
-        <h2 className="font-serif text-4xl leading-tight sm:text-5xl">{t("title")}</h2>
-        <p className="mx-auto mt-5 max-w-lg text-muted-foreground">{t("description")}</p>
+        <p className="eyebrow mb-4">{eyebrow || t("eyebrow")}</p>
+        <h2 className="font-serif text-4xl leading-tight sm:text-5xl">{title || t("title")}</h2>
+        <p className="mx-auto mt-5 max-w-lg text-muted-foreground">{description || t("description")}</p>
         <Button asChild size="lg" variant="outline" className="mt-10">
-          <Link href="/contact">{t("cta")}</Link>
+          <Link href="/contact">{ctaText || t("cta")}</Link>
         </Button>
       </AnimatedSection>
 
@@ -44,6 +57,7 @@ function WinterLocationsView({ photos }: { photos: WinterLocationPhoto[] }) {
                 src={photo.url}
                 alt=""
                 fill
+                quality={90}
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                 className="object-cover"
               />

@@ -1,6 +1,5 @@
-import type { Locale } from "@/i18n/routing";
 import { getSupabasePublicClient } from "@/lib/supabase/client";
-import type { Project, ProjectCategory, SiteSettings, WinterLocationPhoto } from "@/types";
+import type { EventType, PricingPackage, Photo, SiteSettings, WinterLocationPhoto } from "@/types";
 import { FALLBACK_SETTINGS } from "@/lib/constants";
 
 /**
@@ -18,109 +17,67 @@ function isSupabaseConfigured() {
   );
 }
 
-/** Picks the localized override for a field, falling back to the Russian base value. */
-export function localize(
-  project: Pick<Project, "title" | "title_ro" | "title_en" | "description" | "description_ro" | "description_en">,
-  locale: Locale
-) {
-  const title =
-    (locale === "ro" ? project.title_ro : locale === "en" ? project.title_en : null) ||
-    project.title;
-  const description =
-    (locale === "ro"
-      ? project.description_ro
-      : locale === "en"
-        ? project.description_en
-        : null) || project.description;
-
-  return { title, description };
-}
-
-const DEMO_PROJECTS: Project[] = [
+const DEMO_EVENT_TYPES: EventType[] = [
   {
-    id: "demo-1",
-    slug: "andrei-si-maria",
-    category: "weddings",
-    title: "Андрей и Мария",
-    title_ro: "Andrei și Maria",
-    title_en: "Andrei & Maria",
-    description:
-      "Тёплая осенняя свадьба в винограднике под Кишинёвом — с закатом, объятиями родителей и танцами до рассвета.",
-    description_ro:
-      "O nuntă caldă de toamnă într-o vie lângă Chișinău — cu apus, îmbrățișările părinților și dans până în zori.",
-    description_en:
-      "A warm autumn wedding at a vineyard near Chișinău — sunset, parents' embraces and dancing until dawn.",
-    event_date: "2025-09-14",
-    cover_url: null,
-    cover_public_id: null,
-    youtube_url: null,
-    is_published: true,
-    is_featured: true,
+    id: "demo-type-weddings",
+    slug: "nunti",
+    name: "Свадьбы",
+    description: "Свадебная фотография и видеография полного дня.",
+    price: "от 500 €",
+    position: 0,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    name_ro: "Nunți",
+    name_en: "Weddings",
+    description_ro: "Fotografie și videografie de nuntă pe parcursul întregii zile.",
+    description_en: "Full-day wedding photography and videography.",
+  },
+  {
+    id: "demo-type-cumatrii",
+    slug: "cumatrii",
+    name: "Кумэтрии",
+    description: "Тёплая съёмка традиционного семейного праздника.",
+    price: "от 300 €",
     position: 1,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
+    name_ro: "Cumătrii",
+    name_en: "Godparent Ceremonies",
+    description_ro: "Filmare caldă a unei sărbători tradiționale de familie.",
+    description_en: "A warm take on this traditional family celebration.",
   },
   {
-    id: "demo-2",
-    slug: "familia-rusu-cumatrie",
-    category: "cumatrii",
-    title: "Кумэтрия семьи Русу",
-    title_ro: "Cumătria familiei Rusu",
-    title_en: "The Rusu family cumătrie",
-    description: "Радостный семейный праздник с традициями и большим столом.",
-    description_ro: "O sărbătoare de familie plină de bucurie, tradiții și o masă mare.",
-    description_en: "A joyful family celebration full of tradition and a long table.",
-    event_date: "2025-06-02",
-    cover_url: null,
-    cover_public_id: null,
-    youtube_url: null,
-    is_published: true,
-    is_featured: true,
+    id: "demo-type-baptisms",
+    slug: "krestiny",
+    name: "Крестины",
+    description: "Нежные кадры одного из самых важных дней семьи.",
+    price: "от 250 €",
     position: 2,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
+    name_ro: "Botez",
+    name_en: "Baptisms",
+    description_ro: "Cadre delicate dintr-una din cele mai importante zile ale familiei.",
+    description_en: "Tender frames from one of a family's most important days.",
   },
   {
-    id: "demo-3",
-    slug: "sofia-botez",
-    category: "baptisms",
-    title: "Крестины Софии",
-    title_ro: "Botezul Sofiei",
-    title_en: "Sofia's baptism",
-    description: "Нежный день, полный улыбок и семейного тепла.",
-    description_ro: "O zi delicată, plină de zâmbete și căldură familială.",
-    description_en: "A gentle day full of smiles and family warmth.",
-    event_date: "2025-05-11",
-    cover_url: null,
-    cover_public_id: null,
-    youtube_url: null,
-    is_published: true,
-    is_featured: true,
+    id: "demo-type-events",
+    slug: "meropriyatiya",
+    name: "Мероприятия",
+    description: "Фото и видео съёмка мероприятий любого масштаба.",
+    price: null,
     position: 3,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-  },
-  {
-    id: "demo-4",
-    slug: "ion-si-ana-love-story",
-    category: "love-stories",
-    title: "Ион и Анна",
-    title_ro: "Ion și Ana",
-    title_en: "Ion & Ana",
-    description: "Прогулка по старому городу и recreare искренних чувств перед свадьбой.",
-    description_ro: "O plimbare prin orașul vechi și emoții sincere înainte de nuntă.",
-    description_en: "A walk through the old town and genuine emotion before the wedding.",
-    event_date: "2025-04-20",
-    cover_url: null,
-    cover_public_id: null,
-    youtube_url: null,
-    is_published: true,
-    is_featured: true,
-    position: 4,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    name_ro: "Evenimente",
+    name_en: "Events",
+    description_ro: "Foto și video pentru evenimente de orice amploare.",
+    description_en: "Photo and video coverage for events of any scale.",
   },
 ];
+
+// Demo mode never had real uploaded media either — every category simply
+// renders an empty gallery until Supabase is configured.
 
 export async function getSettings(): Promise<SiteSettings> {
   if (!isSupabaseConfigured()) {
@@ -137,25 +94,80 @@ export async function getSettings(): Promise<SiteSettings> {
   return data as SiteSettings;
 }
 
-export async function getFeaturedProjects(limit = 4): Promise<Project[]> {
+export async function getEventTypes(): Promise<EventType[]> {
   if (!isSupabaseConfigured()) {
-    return DEMO_PROJECTS.slice(0, limit);
+    return DEMO_EVENT_TYPES;
   }
 
   const supabase = getSupabasePublicClient();
   const { data, error } = await supabase
-    .from("projects")
-    .select("*, photos(*)")
-    .eq("is_published", true)
-    .eq("is_featured", true)
-    .order("position", { ascending: true })
-    .limit(limit);
+    .from("event_types")
+    .select("*")
+    .order("position", { ascending: true });
 
-  if (error || !data?.length) {
-    return DEMO_PROJECTS.slice(0, limit);
+  if (error || !data) return DEMO_EVENT_TYPES;
+  return data as EventType[];
+}
+
+/** Event types that have at least one published photo/video — used to decide which
+ * categories actually appear as Portfolio tabs (a service with no media yet is only
+ * shown in the homepage Services section, not in Portfolio). */
+export async function getEventTypesWithMedia(): Promise<EventType[]> {
+  const eventTypes = await getEventTypes();
+  if (!isSupabaseConfigured()) return eventTypes;
+
+  const supabase = getSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("photos")
+    .select("event_type_id")
+    .eq("is_published", true);
+
+  if (error || !data) return [];
+
+  const idsWithMedia = new Set(data.map((row) => row.event_type_id).filter(Boolean));
+  return eventTypes.filter((eventType) => idsWithMedia.has(eventType.id));
+}
+
+export async function getEventTypeBySlug(slug: string): Promise<EventType | null> {
+  // Next.js sometimes hands dynamic route params through still URL-encoded
+  // (observed with non-ASCII/Cyrillic slugs) — decode defensively so lookups
+  // against the raw DB value succeed either way.
+  let decodedSlug = slug;
+  try {
+    decodedSlug = decodeURIComponent(slug);
+  } catch {
+    // slug wasn't encoded / already decoded — use as-is.
   }
 
-  return data as Project[];
+  const types = await getEventTypes();
+  return types.find((t) => t.slug === decodedSlug) ?? null;
+}
+
+/** For the homepage "featured" section: the first few categories that already have media, each paired with one cover photo. */
+export async function getFeaturedCategories(
+  limit = 4
+): Promise<{ eventType: EventType; cover: Photo | null }[]> {
+  const eventTypes = (await getEventTypesWithMedia()).slice(0, limit);
+
+  if (!isSupabaseConfigured()) {
+    return eventTypes.map((eventType) => ({ eventType, cover: null }));
+  }
+
+  const supabase = getSupabasePublicClient();
+  return Promise.all(
+    eventTypes.map(async (eventType) => {
+      const { data } = await supabase
+        .from("photos")
+        .select("*")
+        .eq("event_type_id", eventType.id)
+        .eq("media_type", "photo")
+        .eq("is_published", true)
+        .order("position", { ascending: true })
+        .limit(1);
+
+      return { eventType, cover: (data?.[0] as Photo | undefined) ?? null };
+    })
+  );
 }
 
 export async function getWinterLocationPhotos(): Promise<WinterLocationPhoto[]> {
@@ -172,58 +184,148 @@ export async function getWinterLocationPhotos(): Promise<WinterLocationPhoto[]> 
   return data as WinterLocationPhoto[];
 }
 
-export async function getProjects(category?: ProjectCategory): Promise<Project[]> {
-  if (!isSupabaseConfigured()) {
-    return category ? DEMO_PROJECTS.filter((p) => p.category === category) : DEMO_PROJECTS;
+const DEMO_PRICING_PACKAGES: PricingPackage[] = [
+  {
+    id: "demo-package-classic",
+    name: "Classic",
+    name_ro: "Classic",
+    name_en: "Classic",
+    price: null,
+    features: [
+      "Один фотограф",
+      "Один видеограф",
+      "Неограниченное время работы для съёмки всех важных моментов события",
+      "Профессиональная обработка всех фото и видео материалов",
+      "Выезд фотографа и видеографа включён в стоимость",
+      "Возможность заключить договор для прозрачности и безопасности",
+      "Срок сдачи готового материала — до 3 месяцев",
+    ],
+    features_ro: [
+      "Un fotograf",
+      "Un videograf",
+      "Timp nelimitat de lucru pentru filmarea tuturor momentelor importante ale evenimentului",
+      "Procesare profesională a tuturor materialelor foto și video",
+      "Deplasarea fotografului și videografului este inclusă în preț",
+      "Posibilitatea de a încheia un contract pentru transparență și siguranță",
+      "Termen de predare a materialului final — până la 3 luni",
+    ],
+    features_en: [
+      "One photographer",
+      "One videographer",
+      "Unlimited working time to capture all the important moments of the event",
+      "Professional editing of all photo and video materials",
+      "Photographer and videographer travel included in the price",
+      "Option to sign a contract for transparency and security",
+      "Final material delivery time — up to 3 months",
+    ],
+    is_featured: false,
+    position: 0,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "demo-package-premium",
+    name: "Premium",
+    name_ro: "Premium",
+    name_en: "Premium",
+    price: null,
+    features: [
+      "Один фотограф",
+      "Один видеограф",
+      "Фотоальбом",
+      "Съёмка с дрона",
+      "Печать фотографий прямо во время мероприятия",
+      "Неограниченное время работы для съёмки всех важных моментов события",
+      "Профессиональная обработка всех фото и видео материалов",
+      "Выезд фотографа и видеографа включён в стоимость",
+      "Возможность заключить договор для прозрачности и безопасности",
+      "Срок сдачи готового материала — до 3 месяцев",
+    ],
+    features_ro: [
+      "Un fotograf",
+      "Un videograf",
+      "Album foto",
+      "Filmare cu drona",
+      "Printare foto chiar în timpul evenimentului",
+      "Timp nelimitat de lucru pentru filmarea tuturor momentelor importante ale evenimentului",
+      "Procesare profesională a tuturor materialelor foto și video",
+      "Deplasarea fotografului și videografului este inclusă în preț",
+      "Posibilitatea de a încheia un contract pentru transparență și siguranță",
+      "Termen de predare a materialului final — până la 3 luni",
+    ],
+    features_en: [
+      "One photographer",
+      "One videographer",
+      "Photo album",
+      "Drone filming",
+      "Photo printing right during the event",
+      "Unlimited working time to capture all the important moments of the event",
+      "Professional editing of all photo and video materials",
+      "Photographer and videographer travel included in the price",
+      "Option to sign a contract for transparency and security",
+      "Final material delivery time — up to 3 months",
+    ],
+    is_featured: true,
+    position: 1,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+];
+
+export async function getPricingPackages(): Promise<PricingPackage[]> {
+  if (!isSupabaseConfigured()) return DEMO_PRICING_PACKAGES;
+
+  const supabase = getSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("pricing_packages")
+    .select("*")
+    .order("position", { ascending: true });
+
+  if (error || !data?.length) return DEMO_PRICING_PACKAGES;
+  return data as PricingPackage[];
+}
+
+/** All published photos/videos for one category (or every category if no slug is given), split into photos vs. videos. */
+export async function getMediaByCategory(
+  eventTypeSlug?: string
+): Promise<{ photos: Photo[]; videos: Photo[] }> {
+  // Next.js sometimes hands dynamic route params through still URL-encoded
+  // (observed with non-ASCII/Cyrillic slugs) — decode defensively so lookups
+  // against the raw DB value succeed either way.
+  let decodedSlug = eventTypeSlug;
+  if (decodedSlug) {
+    try {
+      decodedSlug = decodeURIComponent(decodedSlug);
+    } catch {
+      // slug wasn't encoded / already decoded — use as-is.
+    }
+  }
+
+  const empty = { photos: [] as Photo[], videos: [] as Photo[] };
+  if (!isSupabaseConfigured()) return empty;
+
+  let eventTypeId: string | undefined;
+  if (decodedSlug) {
+    const eventType = await getEventTypeBySlug(decodedSlug);
+    if (!eventType) return empty;
+    eventTypeId = eventType.id;
   }
 
   const supabase = getSupabasePublicClient();
   let query = supabase
-    .from("projects")
-    .select("*, photos(*)")
+    .from("photos")
+    .select("*")
     .eq("is_published", true)
     .order("position", { ascending: true });
-
-  if (category) {
-    query = query.eq("category", category);
-  }
+  if (eventTypeId) query = query.eq("event_type_id", eventTypeId);
 
   const { data, error } = await query;
+  if (error || !data) return empty;
 
-  if (error) {
-    return category ? DEMO_PROJECTS.filter((p) => p.category === category) : DEMO_PROJECTS;
-  }
-
-  return (data as Project[]) ?? [];
+  const media = data as Photo[];
+  return {
+    photos: media.filter((p) => p.media_type !== "video"),
+    videos: media.filter((p) => p.media_type === "video"),
+  };
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  // Next.js sometimes hands dynamic route params through still URL-encoded
-  // (observed with non-ASCII/Cyrillic slugs) — decode defensively so lookups
-  // against the raw DB value succeed either way.
-  let decodedSlug = slug;
-  try {
-    decodedSlug = decodeURIComponent(slug);
-  } catch {
-    // slug wasn't encoded / already decoded — use as-is.
-  }
-
-  if (!isSupabaseConfigured()) {
-    return DEMO_PROJECTS.find((p) => p.slug === decodedSlug) ?? null;
-  }
-
-  const supabase = getSupabasePublicClient();
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*, photos(*)")
-    .eq("slug", decodedSlug)
-    .eq("is_published", true)
-    .single();
-
-  if (error || !data) {
-    console.error("getProjectBySlug failed", { slug: decodedSlug, error });
-    return null;
-  }
-
-  return data as Project;
-}

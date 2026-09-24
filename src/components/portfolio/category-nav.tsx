@@ -1,37 +1,48 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
-import { CATEGORY_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import type { ProjectCategory } from "@/types";
+import { localizedName } from "@/lib/event-type-i18n";
+import type { Locale } from "@/i18n/routing";
+import type { EventType } from "@/types";
 
-export function CategoryNav({ active }: { active?: ProjectCategory }) {
+export function CategoryNav({
+  eventTypes,
+  active,
+}: {
+  eventTypes: EventType[];
+  active?: string;
+}) {
   const t = useTranslations("portfolio");
-  const tCategories = useTranslations("categories");
+  const locale = useLocale() as Locale;
 
   return (
-    <nav className="flex flex-wrap gap-x-8 gap-y-3 border-b border-border pb-6">
-      <Link
-        href="/portfolio"
-        className={cn(
-          "text-sm uppercase tracking-[0.15em] transition-colors",
-          !active ? "text-accent" : "text-foreground/60 hover:text-foreground"
-        )}
-      >
-        {t("all")}
-      </Link>
-      {CATEGORY_SLUGS.map((slug) => (
+    <div className="border-b border-border pb-6">
+      <nav className="flex flex-wrap gap-x-8 gap-y-3">
         <Link
-          key={slug}
-          href={{ pathname: "/portfolio/[category]", params: { category: slug } }}
+          href="/portfolio"
           className={cn(
             "text-sm uppercase tracking-[0.15em] transition-colors",
-            active === slug ? "text-accent" : "text-foreground/60 hover:text-foreground"
+            !active ? "text-accent" : "text-foreground/60 hover:text-foreground"
           )}
         >
-          {tCategories(slug)}
+          {t("all")}
         </Link>
-      ))}
-    </nav>
+        {eventTypes.map((eventType) => (
+          <Link
+            key={eventType.id}
+            href={{ pathname: "/portfolio/[category]", params: { category: eventType.slug } }}
+            className={cn(
+              "text-sm uppercase tracking-[0.15em] transition-colors",
+              active === eventType.slug ? "text-accent" : "text-foreground/60 hover:text-foreground"
+            )}
+          >
+            {localizedName(eventType, locale)}
+          </Link>
+        ))}
+      </nav>
+      <p className="mt-4 text-sm text-muted-foreground">{t("moreEvents")}</p>
+    </div>
   );
 }
+

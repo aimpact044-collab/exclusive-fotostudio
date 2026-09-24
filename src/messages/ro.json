@@ -41,10 +41,9 @@
   },
   "featured": {
     "eyebrow": "Portofoliu",
-    "title": "Proiecte selectate",
-    "subtitle": "Câteva povești care ne sunt deosebit de dragi",
-    "viewAll": "Tot portofoliul",
-    "viewProject": "Vezi proiectul"
+    "title": "Categorii recomandate",
+    "subtitle": "Aruncă o privire peste categoriile noastre — poate găsești o poveste asemănătoare cu a ta",
+    "viewAll": "Tot portofoliul"
   },
   "contactSection": {
     "eyebrow": "Începem?",
@@ -55,7 +54,7 @@
   "footer": {
     "tagline": "Studio foto-video premium de nuntă în Moldova.",
     "navigation": "Navigare",
-    "categories": "Categorii",
+    "categories": "Portofoliu",
     "contacts": "Contact",
     "followUs": "Urmărește-ne",
     "rights": "Toate drepturile rezervate."
@@ -65,16 +64,11 @@
     "title": "Portofoliu",
     "subtitle": "Fiecare poveste este unică — alege o categorie pentru a vedea mai multe",
     "all": "Toate",
-    "empty": "Proiectele din această categorie vor apărea în curând.",
-    "viewProject": "Vezi proiectul"
+    "empty": "Fotografiile din această categorie vor apărea în curând.",
+    "moreEvents": "Filmăm și zile de naștere, cumătrii, ședințe foto și alte evenimente — scrieți-ne pentru detalii."
   },
   "project": {
-    "backToPortfolio": "Înapoi la portofoliu",
-    "date": "Data",
-    "gallery": "Galerie foto",
-    "video": "Video",
-    "notFound": "Proiectul nu a fost găsit",
-    "relatedTitle": "Alte povești"
+    "video": "Video"
   },
   "contactPage": {
     "eyebrow": "Contact",
@@ -169,9 +163,17 @@
       "seasonal": "Sezoniere"
     }
   },
+  "pricing": {
+    "eyebrow": "Prețuri",
+    "title": "Pachete de servicii",
+    "subtitle": "Alege pachetul potrivit pentru evenimentul tău sau contactează-ne pentru o ofertă personalizată.",
+    "featured": "Cel mai popular",
+    "cta": "Contactează-ne",
+    "premiumOnly": "Doar în Premium"
+  },
   "instantPrinting": {
     "badge": "Serviciu exclusiv",
-    "eyebrow": "Avantajul nostru",
+    "eyebrow": "Unul dintre avantajele noastre",
     "title": "Printare instant a fotografiilor",
     "description": "În timp ce invitații se bucură de petrecere, cele mai bune cadre sunt deja gata de a fi ținute în mână. Printăm fotografii profesionale chiar la nuntă sau eveniment — în câteva minute de la fotografiere.",
     "point1": "Printare în doar câteva minute după cadru",

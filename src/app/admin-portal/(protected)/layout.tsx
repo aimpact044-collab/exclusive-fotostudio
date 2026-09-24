@@ -10,7 +10,7 @@ export default async function ProtectedAdminLayout({
 }) {
   const authenticated = await isAdminAuthenticated();
   if (!authenticated) {
-    redirect("/admin/login");
+    redirect("/admin-portal/login");
   }
 
   return (

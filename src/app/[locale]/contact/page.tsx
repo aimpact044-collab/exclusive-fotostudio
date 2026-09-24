@@ -3,7 +3,8 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 import { PageHero } from "@/components/shared/page-hero";
 import { ContactForm } from "@/components/contact/contact-form";
-import { getSettings } from "@/lib/data";
+import { getSettings, getEventTypes } from "@/lib/data";
+import { localizedSetting } from "@/lib/settings-i18n";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -25,11 +26,24 @@ export default async function ContactPage({
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "contactPage" });
-  const settings = await getSettings();
+  const [settings, eventTypes] = await Promise.all([getSettings(), getEventTypes()]);
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+      <PageHero
+        eyebrow={
+          localizedSetting(settings.contact_page_eyebrow, settings.contact_page_eyebrow_ro, settings.contact_page_eyebrow_en, locale) ||
+          t("eyebrow")
+        }
+        title={
+          localizedSetting(settings.contact_page_title, settings.contact_page_title_ro, settings.contact_page_title_en, locale) ||
+          t("title")
+        }
+        subtitle={
+          localizedSetting(settings.contact_page_subtitle, settings.contact_page_subtitle_ro, settings.contact_page_subtitle_en, locale) ||
+          t("subtitle")
+        }
+      />
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-16 px-6 py-16 lg:grid-cols-5 lg:px-10 lg:py-24">
         <div className="lg:col-span-2">
@@ -100,7 +114,7 @@ export default async function ContactPage({
         </div>
 
         <div className="lg:col-span-3">
-          <ContactForm />
+          <ContactForm eventTypes={eventTypes} />
         </div>
       </div>
     </>

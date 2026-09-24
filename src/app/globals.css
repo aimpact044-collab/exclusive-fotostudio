@@ -2,42 +2,43 @@
 @import "tw-animate-css";
 
 /* ---------------------------------------------------------------------- */
-/* Design tokens — premium editorial wedding palette                       */
-/* Light, warm, cream/beige tones with a muted gold accent.                */
+/* Design tokens — palette matched to the Exclusive PhotoStudio logo:      */
+/* brushed graphite/charcoal darks, warm cream, and a rose-gold/copper     */
+/* accent lifted straight from the logo wordmark.                         */
 /* ---------------------------------------------------------------------- */
 :root {
-  --background: #fbf8f3;
-  --foreground: #2b2520;
+  --background: #faf7f2;
+  --foreground: #201f1e;
 
   --card: #ffffff;
-  --card-foreground: #2b2520;
+  --card-foreground: #201f1e;
 
   --popover: #ffffff;
-  --popover-foreground: #2b2520;
+  --popover-foreground: #201f1e;
 
-  --primary: #2b2520;
-  --primary-foreground: #fbf8f3;
+  --primary: #201f1e;
+  --primary-foreground: #faf7f2;
 
-  --secondary: #efe6d8;
-  --secondary-foreground: #2b2520;
+  --secondary: #ece3d3;
+  --secondary-foreground: #201f1e;
 
-  --muted: #f1ebe1;
-  --muted-foreground: #756a5d;
+  --muted: #efe9dd;
+  --muted-foreground: #726a5d;
 
-  --accent: #ab8a5c;
-  --accent-foreground: #2b2520;
+  --accent: #b8875a;
+  --accent-foreground: #201f1e;
 
-  --gold: #ab8a5c;
-  --cream: #fbf8f3;
-  --beige: #efe6d8;
-  --ink: #2b2520;
+  --gold: #b8875a;
+  --cream: #faf7f2;
+  --beige: #ece3d3;
+  --ink: #201f1e;
 
   --destructive: #b3432f;
-  --destructive-foreground: #fbf8f3;
+  --destructive-foreground: #faf7f2;
 
-  --border: #e4dac9;
-  --input: #e4dac9;
-  --ring: #ab8a5c;
+  --border: #e1d7c3;
+  --input: #e1d7c3;
+  --ring: #b8875a;
 
   --radius: 0.25rem;
 }

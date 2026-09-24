@@ -1,15 +1,36 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Printer, Check, Sparkles } from "lucide-react";
 
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 
-export function InstantPrinting() {
+interface InstantPrintingProps {
+  imageUrl?: string | null;
+  badge?: string | null;
+  eyebrow?: string | null;
+  title?: string | null;
+  description?: string | null;
+  points?: string[] | null;
+  ctaText?: string | null;
+}
+
+export function InstantPrinting({
+  imageUrl,
+  badge,
+  eyebrow,
+  title,
+  description,
+  points: pointsOverride,
+  ctaText,
+}: InstantPrintingProps) {
   const t = useTranslations("instantPrinting");
-  const points = [t("point1"), t("point2"), t("point3")];
+  const defaultPoints = [t("point1"), t("point2"), t("point3")];
+  const points = defaultPoints.map((point, i) => pointsOverride?.[i] || point);
+  const titleText = title || t("title");
 
   return (
     <section className="relative overflow-hidden bg-ink py-24 text-cream lg:py-32">
@@ -20,13 +41,13 @@ export function InstantPrinting() {
         <AnimatedSection>
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-accent">
             <Sparkles className="size-3.5" />
-            {t("badge")}
+            {badge || t("badge")}
           </span>
 
-          <p className="eyebrow mb-4 text-cream/70">{t("eyebrow")}</p>
-          <h2 className="font-serif text-4xl leading-tight sm:text-5xl">{t("title")}</h2>
+          <p className="eyebrow mb-4 text-cream/70">{eyebrow || t("eyebrow")}</p>
+          <h2 className="font-serif text-4xl leading-tight sm:text-5xl">{titleText}</h2>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-cream/80">
-            {t("description")}
+            {description || t("description")}
           </p>
 
           <ul className="mt-8 space-y-3">
@@ -39,19 +60,25 @@ export function InstantPrinting() {
           </ul>
 
           <Button asChild size="lg" variant="gold" className="mt-10">
-            <Link href="/contact">{t("cta")}</Link>
+            <Link href="/contact">{ctaText || t("cta")}</Link>
           </Button>
         </AnimatedSection>
 
         <AnimatedSection delay={0.15} className="relative">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-cream/15 bg-gradient-to-br from-[#4a3f32] via-[#2b2520] to-[#1c1712]">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex size-28 items-center justify-center rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm">
-                <Printer className="size-12 text-accent" />
-              </div>
-            </div>
-            <div className="absolute inset-x-10 bottom-10 h-24 rounded-sm border border-cream/20 bg-cream/5 shadow-2xl backdrop-blur-sm" />
-            <div className="absolute inset-x-16 bottom-16 h-24 rotate-3 rounded-sm border border-cream/25 bg-cream/10 shadow-2xl backdrop-blur-sm" />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-cream/15 bg-gradient-to-br from-[#3a3836] via-[#201f1e] to-[#121110]">
+            {imageUrl ? (
+              <Image src={imageUrl} alt={titleText} fill className="object-cover" />
+            ) : (
+              <>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex size-28 items-center justify-center rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm">
+                    <Printer className="size-12 text-accent" />
+                  </div>
+                </div>
+                <div className="absolute inset-x-10 bottom-10 h-24 rounded-sm border border-cream/20 bg-cream/5 shadow-2xl backdrop-blur-sm" />
+                <div className="absolute inset-x-16 bottom-16 h-24 rotate-3 rounded-sm border border-cream/25 bg-cream/10 shadow-2xl backdrop-blur-sm" />
+              </>
+            )}
           </div>
         </AnimatedSection>
       </div>

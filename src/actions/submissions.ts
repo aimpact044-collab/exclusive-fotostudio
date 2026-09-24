@@ -16,5 +16,5 @@ export async function markSubmissionRead(id: string, isRead: boolean) {
     .eq("id", id);
 
   if (error) throw new Error(error.message);
-  revalidatePath("/admin/submissions");
+  revalidatePath("/admin-portal/submissions");
 }

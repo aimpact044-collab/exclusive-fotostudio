@@ -31,10 +31,10 @@ export async function loginAction(
   }
 
   await createAdminSession();
-  redirect("/admin");
+  redirect("/admin-portal");
 }
 
 export async function logoutAction() {
   await clearAdminSession();
-  redirect("/admin/login");
+  redirect("/admin-portal/login");
 }

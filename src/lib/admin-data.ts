@@ -1,7 +1,14 @@
 import "server-only";
 
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
-import type { ContactSubmission, Project, SiteSettings, WinterLocationPhoto } from "@/types";
+import type {
+  ContactSubmission,
+  EventType,
+  Photo,
+  PricingPackage,
+  SiteSettings,
+  WinterLocationPhoto,
+} from "@/types";
 
 function isSupabaseConfigured() {
   return Boolean(
@@ -9,30 +16,40 @@ function isSupabaseConfigured() {
   );
 }
 
-export async function getAllProjectsAdmin(): Promise<Project[]> {
+export async function getEventTypesAdmin(): Promise<EventType[]> {
   if (!isSupabaseConfigured()) return [];
   const supabase = getSupabaseAdminClient();
   const { data, error } = await supabase
-    .from("projects")
-    .select("*, photos(*)")
+    .from("event_types")
+    .select("*")
     .order("position", { ascending: true });
 
   if (error) return [];
-  return (data as Project[]) ?? [];
+  return (data as EventType[]) ?? [];
 }
 
-export async function getProjectByIdAdmin(id: string): Promise<Project | null> {
+export async function getEventTypeByIdAdmin(id: string): Promise<EventType | null> {
   if (!isSupabaseConfigured()) return null;
   const supabase = getSupabaseAdminClient();
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*, photos(*)")
-    .eq("id", id)
-    .single();
+  const { data, error } = await supabase.from("event_types").select("*").eq("id", id).single();
 
   if (error || !data) return null;
-  return data as Project;
+  return data as EventType;
 }
+
+export async function getPhotosByEventTypeAdmin(eventTypeId: string): Promise<Photo[]> {
+  if (!isSupabaseConfigured()) return [];
+  const supabase = getSupabaseAdminClient();
+  const { data, error } = await supabase
+    .from("photos")
+    .select("*")
+    .eq("event_type_id", eventTypeId)
+    .order("position", { ascending: true });
+
+  if (error) return [];
+  return (data as Photo[]) ?? [];
+}
+
 
 export async function getSubmissions(): Promise<ContactSubmission[]> {
   if (!isSupabaseConfigured()) return [];
@@ -64,4 +81,16 @@ export async function getWinterLocationPhotosAdmin(): Promise<WinterLocationPhot
 
   if (error) return [];
   return (data as WinterLocationPhoto[]) ?? [];
+}
+
+export async function getPricingPackagesAdmin(): Promise<PricingPackage[]> {
+  if (!isSupabaseConfigured()) return [];
+  const supabase = getSupabaseAdminClient();
+  const { data, error } = await supabase
+    .from("pricing_packages")
+    .select("*")
+    .order("position", { ascending: true });
+
+  if (error) return [];
+  return (data as PricingPackage[]) ?? [];
 }

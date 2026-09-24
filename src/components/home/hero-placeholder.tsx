@@ -8,10 +8,10 @@
 export function HeroPlaceholder() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(160deg,#241f1a_0%,#3a3128_32%,#6b5236_68%,#a9835a_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(160deg,#141312_0%,#201f1e_32%,#4a3c30_68%,#b8875a_100%)]" />
 
-      {/* golden-hour glow */}
-      <div className="absolute left-1/2 top-[58%] size-[60vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(244,214,168,0.55)_0%,rgba(244,214,168,0.15)_38%,transparent_68%)] blur-2xl" />
+      {/* copper glow, echoing the logo's rose-gold wordmark */}
+      <div className="absolute left-1/2 top-[58%] size-[60vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(184,135,90,0.5)_0%,rgba(184,135,90,0.15)_38%,transparent_68%)] blur-2xl" />
 
       {/* camera-aperture rings, a nod to photography */}
       <div className="absolute left-1/2 top-1/2 size-[38vmax] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cream/10" />

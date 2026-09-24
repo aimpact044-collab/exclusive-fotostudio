@@ -1,16 +1,27 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
-import { CATEGORY_SLUGS, SITE_NAME } from "@/lib/constants";
-import { FALLBACK_SETTINGS } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
+import { localizedName } from "@/lib/event-type-i18n";
+import { localizedSetting } from "@/lib/settings-i18n";
+import type { Locale } from "@/i18n/routing";
+import type { EventType, SiteSettings } from "@/types";
 
-export function Footer() {
+export function Footer({
+  eventTypes,
+  settings,
+}: {
+  eventTypes: EventType[];
+  settings: SiteSettings;
+}) {
   const t = useTranslations("footer");
   const tNav = useTranslations("nav");
-  const tCategories = useTranslations("categories");
+  const locale = useLocale() as Locale;
 
-  const settings = FALLBACK_SETTINGS;
+  // Settings.phone may list multiple numbers comma-separated — only the
+  // first is usable in a `tel:` link.
+  const primaryPhone = settings.phone.split(",")[0]?.trim() ?? settings.phone;
   const year = new Date().getFullYear();
 
   return (
@@ -22,7 +33,8 @@ export function Footer() {
               {SITE_NAME}
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              {t("tagline")}
+              {localizedSetting(settings.footer_tagline, settings.footer_tagline_ro, settings.footer_tagline_en, locale) ||
+                t("tagline")}
             </p>
           </div>
 
@@ -50,13 +62,13 @@ export function Footer() {
           <div>
             <h3 className="eyebrow mb-4">{t("categories")}</h3>
             <ul className="space-y-3 text-sm">
-              {CATEGORY_SLUGS.map((slug) => (
-                <li key={slug}>
+              {eventTypes.map((eventType) => (
+                <li key={eventType.id}>
                   <Link
-                    href={{ pathname: "/portfolio/[category]", params: { category: slug } }}
+                    href={{ pathname: "/portfolio/[category]", params: { category: eventType.slug } }}
                     className="text-foreground/80 hover:text-accent"
                   >
-                    {tCategories(slug)}
+                    {localizedName(eventType, locale)}
                   </Link>
                 </li>
               ))}
@@ -68,7 +80,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-foreground/80">
                 <Phone className="size-4 text-accent" />
-                <a href={`tel:${settings.phone.replace(/\s/g, "")}`}>{settings.phone}</a>
+                <a href={`tel:${primaryPhone.replace(/\s/g, "")}`}>{settings.phone}</a>
               </li>
               <li className="flex items-center gap-2 text-foreground/80">
                 <Mail className="size-4 text-accent" />
@@ -108,9 +120,6 @@ export function Footer() {
           <p>
             © {year} {SITE_NAME}. {t("rights")}
           </p>
-          <a href="/admin" className="opacity-40 hover:opacity-70">
-            Admin
-          </a>
         </div>
       </div>
     </footer>
