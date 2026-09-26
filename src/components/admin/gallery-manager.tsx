@@ -36,8 +36,18 @@ function MediaSection({
       headers: { "Content-Type": file.type },
       body: file,
     });
-    if (!res.ok) throw new Error("Upload failed");
+if (!res.ok) {
+  const text = await res.text();
+  console.error("R2 upload failed:", {
+    status: res.status,
+    statusText: res.statusText,
+    response: text,
+    uploadUrl,
+    contentType: file.type,
+  });
 
+  throw new Error(`Upload failed: ${res.status} ${res.statusText}`);
+}
     return { url: publicUrl, public_id: key };
   };
 
