@@ -32,6 +32,9 @@ export function Services({ eventTypes }: { eventTypes: EventType[] }) {
                 {description && (
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
                 )}
+                {eventType.price && (
+                  <p className="mt-2 text-sm font-medium text-accent">{eventType.price}</p>
+                )}
               </div>
             </AnimatedSection>
           );

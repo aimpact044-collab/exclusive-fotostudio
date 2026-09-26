@@ -5,6 +5,7 @@ import { PageHero } from "@/components/shared/page-hero";
 import { CategoryNav } from "@/components/portfolio/category-nav";
 import { Gallery } from "@/components/portfolio/gallery";
 import { VideoGrid } from "@/components/portfolio/video-grid";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getMediaByCategory, getEventTypesWithMedia, getEventTypeBySlug } from "@/lib/data";
 import { localizedName } from "@/lib/event-type-i18n";
 import type { Locale } from "@/i18n/routing";
@@ -43,6 +44,8 @@ export default async function CategoryPage({
   ]);
 
   const categoryName = localizedName(eventType, locale);
+  const hasPhotos = photos.length > 0;
+  const hasVideos = videos.length > 0;
 
   return (
     <>
@@ -50,17 +53,31 @@ export default async function CategoryPage({
       <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-10 lg:pb-32">
         <CategoryNav eventTypes={eventTypes} active={category} />
 
-        {photos.length === 0 && videos.length === 0 ? (
+        {!hasPhotos && !hasVideos && (
           <p className="py-24 text-center text-muted-foreground">{t("empty")}</p>
-        ) : (
+        )}
+
+        {hasPhotos && hasVideos && (
           <div className="pt-14">
-            {photos.length > 0 && <Gallery photos={photos} title={categoryName} />}
-            {videos.length > 0 && (
-              <div className={photos.length > 0 ? "mt-16" : undefined}>
-                <p className="eyebrow mb-6">{tProject("video")}</p>
+            <Tabs defaultValue="photos">
+              <TabsList className="mb-8">
+                <TabsTrigger value="photos">{tProject("photo")}</TabsTrigger>
+                <TabsTrigger value="video">{tProject("video")}</TabsTrigger>
+              </TabsList>
+              <TabsContent value="photos">
+                <Gallery photos={photos} title={categoryName} />
+              </TabsContent>
+              <TabsContent value="video">
                 <VideoGrid videos={videos} />
-              </div>
-            )}
+              </TabsContent>
+            </Tabs>
+          </div>
+        )}
+
+        {(hasPhotos !== hasVideos) && (
+          <div className="pt-14">
+            {hasPhotos && <Gallery photos={photos} title={categoryName} />}
+            {hasVideos && <VideoGrid videos={videos} />}
           </div>
         )}
       </div>
